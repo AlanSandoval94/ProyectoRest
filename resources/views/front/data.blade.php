@@ -3,6 +3,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Agregar</title>
+		<style>
+			form{
+				background:#f5f5f5;
+				padding:20px;
+				border-radius:5px;
+			}
+		</style>
 	</head>
 	<body>
 		<?php 
@@ -14,7 +21,7 @@
 		@case('item_categorias')
 		<h1>Nuevo Producto</h1>
 		<hr>
-		<form action="{{ URL::to('api/item_categorias/save') }}" method="POST">
+		<form action="{{ URL::to('api/item_categorias/save') }}" method="POST" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			<table>
 				<tr>
@@ -24,8 +31,9 @@
 							<?php $menuCategorias = DB::table('menu_categorias')->get(); ?>
 							<option>------------------------</option>
 							@foreach ($menuCategorias as $menuCateg)
-								<option value="{{ $menuCateg->id_categoria }}">{{ $menuCateg->nombre_categoria }}</option>>
+								<option value="{{ $menuCateg->id_categoria }}">{{ $menuCateg->nombre_categoria }}</option>
 							@endforeach
+							<input type="hidden" name="nombre_categ" value="{{ $menuCateg->nombre_categoria }}">
 						</select>
 					</td>
 				</tr>
@@ -42,9 +50,11 @@
 					<td><input type="text" name="precio_prod"></td>
 				</tr>
 				<tr>
-					<td>Path: </td>
-					<td><input type="text" name="path_prod"></td>
+					<!--<td>Path: </td>-->
+					<td><label>File to upload</label></td>
+					<td><input type="file" name="path_prod"></td>
 				</tr>
+				<input type="hidden" name="tabla" value="item_categorias">
 				<tr>
 					<td colspan="4"><hr><input type="submit" value="Agregar"></td>
 				</tr>
