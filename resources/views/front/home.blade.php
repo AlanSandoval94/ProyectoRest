@@ -119,7 +119,7 @@
                 </li>
             </ul>
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search">
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Buscar'"  aria-label="Search">
             </form>
         </div>
     </div>
@@ -149,7 +149,7 @@
                         <h1 class="h1-responsive">Restaurante EcoComidaComputadora AC</h1>
                     </li>
                     <li>
-                        <p class="otra-letra">El mejor restaurante de comida en todo México, Kanto, Ciudad Gótica, Asia y Júpiter.</p>
+                        <p class="">El mejor restaurante de comida en todo México, Kanto, Ciudad Gótica, Asia y Júpiter.</p>
                     </li>
                     <li>
                         <a target="_blank" href="https://mdbootstrap.com/getting-started/" class="btn btn-info btn-lg" rel="nofollow">Éntrele!</a>
@@ -167,6 +167,7 @@
             <!-- Caption -->
             <div class="full-bg-img flex-center white-text">
                 <ul class="animated fadeIn col-md-12">
+                    <br><br>
                     <li>
                         <h1 class="h1-responsive">UNA sola razón para que usted deguste nuestra comida: ¡Está deliciosa!</h1>
                     </li>
@@ -189,6 +190,7 @@
             <!-- Caption -->
             <div class="full-bg-img flex-center white-text">
                 <ul class="animated fadeIn col-md-12">
+                    <br><br>
                     <li>
                         <h1 class="h1-responsive">Comida de fin de semana - La mejor opción para no cocinar.</h1>
                     </li>
@@ -196,7 +198,7 @@
                         <p>Ven y disfruta del menudo y del pozole mañanero.</p>
                     </li>
                     <li>
-                        <a target="_blank" href="https://mdbootstrap.com/forums/forum/support/" class="btn btn-default btn-lg" rel="nofollow">Éntrele!</a>
+                        <a target="_blank" href="https://mdbootstrap.com/forums/forum/support/" class="btn btn-info btn-lg" rel="nofollow">Éntrele!</a>
                     </li>
                 </ul>
             </div>
