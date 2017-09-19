@@ -4,7 +4,7 @@
 		<title>API</title>
 	</head>
 	<body>
-		<h1 align="center">Página en construcción xD</h1>
+		<h1 align="center">API RestauEco</h1>
 
 		<?php
 			$tables = DB::select('SHOW TABLES');
