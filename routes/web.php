@@ -13,6 +13,7 @@
 use Illuminate\Http\Request;
 //use DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,23 +45,40 @@ Route::post('api/{table}/save',function(Request $request){
 	$tabla = $request->tabla;
 	switch ($tabla) {
 		case 'item_categorias':
-			dump($request->all());
-			/*$data = ['menu_id'=>$request->categoria_prod, 'item_name'=>$request->nombre_prod,'descripcion'=>$request->descripcion_prod,'precio'=>$request->precio_prod,'path'=>('images/'. $request->nombre_categ . "/" . $request->path_prod)];
-			DB::table('item_categorias')->insert($data);*/
+			if(Input::hasFile('path_prod')){
+				$menu = DB::table('menu_categorias')->where('id_categoria', '=', $request->categoria_prod)->pluck('nombre_categoria');
+				$json = json_encode($menu);
+				$json = str_replace('[', '', $json);
+				$json = str_replace('"', '', $json);
+				$json = str_replace(']', '', $json);
+				$json = str_replace(' ', '_', $json);
+				$file = Input::file('path_prod');
+			$data = ['menu_id'=>$request->categoria_prod, 'item_name'=>$request->nombre_prod,'descripcion'=>$request->descripcion_prod,'precio'=>$request->precio_prod,'path'=>('images/'. $json . "/" . $file->getClientOriginalName())];
+			DB::table('item_categorias')->insert($data);
 			//$request->path_prod->move(base_path().'/public/images'.$request->nombre_categ.'/', $request->path_prod);
 
-			request()->file('path_prod')->store($request->nombre_categ,'public');
+			//request()->file('path_prod')->store($request->nombre_categ,'public');
 
-			/*if(Input::hasFile($request->path_prod)){
-				$file = Input::file($request->path_prod);
-				$file->move('images/'. $request->nombre_categ . '/' , $request->path_prod);
+				$file->move('images/'. $json . '/' , $file->getClientOriginalName());
 			} else {
 				echo "no file";
-			}*/
+			}
 
+			break;
+		case 'menu_categorias':
+				$data = ['nombre_categoria'=>$request->nombre_menu];
+				DB::table('menu_categorias')->insert($data);
+				//return Storage::makeDirectory('public/'.$request->nombre_menu);
+				$crear = mkdir ('images/'.$request->nombre_menu, 0777);
+				if($crear){
+					echo "Directorio creado";
+				} else {
+					echo "Directorio NO creado";
+				}
 			break;
 		default:
 			# code...
+			echo "NADA :v";
 			break;
 	}
 
