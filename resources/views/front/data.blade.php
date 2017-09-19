@@ -15,7 +15,7 @@
 		<?php 
 		$table = $_SESSION['pass'];
 		$categorias = DB::table($table)->get();
-		echo json_encode($categorias);
+		//echo json_encode($categorias);
 		?>
 		@switch($table)
 		@case('item_categorias')
@@ -33,7 +33,6 @@
 							@foreach ($menuCategorias as $menuCateg)
 								<option value="{{ $menuCateg->id_categoria }}">{{ $menuCateg->nombre_categoria }}</option>
 							@endforeach
-							<input type="hidden" name="nombre_categ" value="{{ $menuCateg->nombre_categoria }}">
 						</select>
 					</td>
 				</tr>
@@ -60,6 +59,26 @@
 				</tr>
 			</table>
 		</form>
+		<h1>Seleccione un elemento para borrar.</h1>
+		<hr>
+		<form action="{{ URL::to('api/item_categorias/delete') }}" method="POST">
+			{{ csrf_field() }}
+			<table>
+				<tr>
+					<td>
+						<select type="text" name="categoria_item_DELETE">
+							<?php
+								$delItemCategorias = DB::table('item_categorias')->get();
+							?>
+							@foreach ($delItemCategorias as $delItemCateg)
+								<option value="{{ $delItemCateg->id }}">{{ $delItemCateg->item_name }}</option>
+							@endforeach
+						</select>
+					</td>
+					<td><input type="submit" value="Borrar"></td>
+				</tr>
+			</table>
+		</form>
 		@break
 		@case('menu_categorias')
 		<h1>Nueva Categoría</h1>
@@ -70,8 +89,29 @@
 					<td>Nombre: </td>
 					<td><input type="text" name="nombre_menu"></td>
 				</tr>
+				<input type="hidden" name="tabla" value="menu_categorias">
 				<tr>
 					<td colspan="4"><hr><input type="submit" value="Agregar"></td>
+				</tr>
+			</table>
+		</form>
+		<h1>Seleccione un elemento para borrar.</h1>
+		<hr>
+		<form action="{{ URL::to('api/mwnu_categorias/delete') }}" method="POST">
+			{{ csrf_field() }}
+			<table>
+				<tr>
+					<td>
+						<select type="text" name="categoria_menu_DELETE">
+							<?php
+								$delItemCategorias = DB::table('menu_categorias')->get();
+							?>
+							@foreach ($delItemCategorias as $delItemCateg)
+								<option value="{{ $delItemCateg->id_categoria }}">{{ $delItemCateg->nombre_categoria }}</option>
+							@endforeach
+						</select>
+					</td>
+					<td><input type="submit" value="Borrar"></td>
 				</tr>
 			</table>
 		</form>
