@@ -1,1 +1,36 @@
 /* YOUR CUSTOM STYLES */
+@font-face{
+	font-family: Kaushan Script;
+    src: url(../fonts/Kaushan_Script/KaushanScript-Regular.ttf);
+}
+@font-face{
+	font-family: Quattrocento Sans;
+    src: url(../fonts/QuattrocentoSans/QuattrocentoSans-Regular.ttf);
+}
+*{
+	font-family: 'Kaushan Script',cursive;
+}
+.btn-info{
+	background:#ef8c13!important;
+	border: 1px solid #ef8c13!important;
+}
+.btn-info.active, .btn-info:active, .btn-info:focus, .btn-info:hover {
+   background:#ff6000!important;
+}
+.btn-info:hover{
+	border: 1px solid #ff6000!important;
+}
+.otra-letra{
+	font-family: 'Quattrocento Sans'!important;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #1d1e1f;
+    text-decoration: none;
+    background-color: #ef8c13!important;
+}
+.navbar {
+    background-color: rgba(255, 140, 0, 0.7)!important;
+}
+.top-nav-collapse {
+    background-color: #ef8c13!important;
+}
