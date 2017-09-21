@@ -16,11 +16,24 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front/home');
 });
 
 Route::get('home', function () {
     return view('front/home');
+});
+
+Route::get('categorias/{categ}', function ($categ) {
+	//$_SESSION['pass'] = $categ;
+    return view('front/categorias');
+});
+
+Route::get('conocenos', function () {
+    return view('front/conocenos');
+});
+
+Route::get('historia', function(){
+	return view('front/historia');
 });
 
 Route::get('consulta', function(){
@@ -83,6 +96,32 @@ Route::post('api/{table}/save',function(Request $request){
 	}
 
 	//dump($request->all());
+});
+
+Route::post('api/{table}/delete', function(Request $request){
+	$tabla = $request->tabla;
+	switch ($tabla) {
+		case 'item_categorias':
+				$borrar = DB::table('item_categorias')->where('id','=', $request->categoria_item_DELETE)->delete();
+				if($borrar){
+					echo "Item borrado.";
+				} else {
+					echo "No se borró";
+				}
+			break;
+		case 'menu_categorias':
+				$borrar = DB::table('menu_categorias')->where('id_categoria','=', $request->categoria_menu_DELETE)->delete();
+				if($borrar){
+					echo "Menu borrado.";
+				} else {
+					echo "No se borró";
+				}
+			break;
+		default:
+			# code...
+			echo "NADA :v";
+			break;
+	}
 });
 
 Route::get('php/php_info',function(){

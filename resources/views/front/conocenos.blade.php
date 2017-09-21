@@ -100,7 +100,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link otra-letra" href=" {{ URL::to('home') }} ">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link otra-letra" href="{{ URL::to('home') }}">Home </a>
                 </li>
                 <li class="nav-item btn-group">
                     <a class="nav-link otra-letra dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías
@@ -110,7 +110,7 @@
                             $categorias = DB::table('menu_categorias')->get();
                         ?>
                         @foreach($categorias as $categ)
-                            <a class="dropdown-item otra-letra" href=" {{ URL::to('categorias/'.$categ->nombre_categoria) }} ">{{ $categ->nombre_categoria }}</a>
+                            <a class="dropdown-item otra-letra" href="{{ URL::to('categorias/'.$categ->nombre_categoria) }}">{{ $categ->nombre_categoria }}</a>
                         @endforeach
                         <!--<a class="dropdown-item otra-letra" href="#">Action</a>
                         <a class="dropdown-item otra-letra" href="#">Another action</a>
@@ -118,7 +118,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link otra-letra" href=" {{ URL::to('conocenos') }} ">Conócenos</a>
+                    <a class="nav-link otra-letra" href="{{ URL::to('conocenos') }}">Conócenos</a>
                 </li>
                 <li class="nav-item otra-letra">
                     <a class="nav-link otra-letra" href="{{ URL::to('historia') }}">Historia</a>
@@ -233,9 +233,21 @@
 <!--Content-->
 <div class="container"><div class="container">
     </br>
-    <h1 align="center">Bienvenido!</h1>
+    <h1 align="center">Misión</h1>
     </br>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue, est non venenatis facilisis, ante tellus sodales risus, id scelerisque orci ante eget est. Sed placerat, magna ac tristique rutrum, erat nibh tempor mi, id ultrices lectus metus at odio. Proin vel dolor sed urna commodo rutrum. Maecenas fermentum orci a neque hendrerit, sed hendrerit sapien vehicula. Nulla feugiat orci tempus blandit laoreet. Morbi non dolor at nulla varius tristique sit amet at augue. Sed est diam, vestibulum consequat ante eu, blandit viverra orci. Duis neque odio, feugiat nec leo at, scelerisque dictum libero. </p>
+    </br>
+    <h1 align="center">Valores</h1>
+    </br>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue, est non venenatis facilisis, ante tellus sodales risus, id scelerisque orci ante eget est. Sed placerat, magna ac tristique rutrum, erat nibh tempor mi, id ultrices lectus metus at odio. Proin vel dolor sed urna commodo rutrum. Maecenas fermentum orci a neque hendrerit, sed hendrerit sapien vehicula. Nulla feugiat orci tempus blandit laoreet. Morbi non dolor at nulla varius tristique sit amet at augue. Sed est diam, vestibulum consequat ante eu, blandit viverra orci. Duis neque odio, feugiat nec leo at, scelerisque dictum libero. </p>
+    </br>
+    <h1 align="center">Acerca de</h1> 
+    </br>
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue, est non venenatis facilisis, ante tellus sodales risus, id scelerisque orci ante eget est. Sed placerat, magna ac tristique rutrum, erat nibh tempor mi, id ultrices lectus metus at odio. Proin vel dolor sed urna commodo rutrum. Maecenas fermentum orci a neque hendrerit, sed hendrerit sapien vehicula. Nulla feugiat orci tempus blandit laoreet. Morbi non dolor at nulla varius tristique sit amet at augue. Sed est diam, vestibulum consequat ante eu, blandit viverra orci. Duis neque odio, feugiat nec leo at, scelerisque dictum libero.
+
+Nullam sodales turpis convallis lorem viverra, eu gravida augue ultricies. Etiam a iaculis eros. Mauris vel placerat massa. Mauris a mi sodales turpis varius mattis vel at nibh. Quisque id hendrerit augue. Quisque interdum est eu accumsan laoreet. Etiam tincidunt varius malesuada. Proin viverra quam augue, vitae blandit libero sodales quis. Praesent interdum turpis a justo efficitur, eget sodales lorem venenatis. Nulla vel convallis purus. Etiam ultricies accumsan orci, ut luctus ligula molestie sed. Fusce dictum libero ut ante commodo, nec maximus ipsum scelerisque.
+
+Maecenas nec elit lacinia metus imperdiet dapibus. Sed elementum tempus viverra. Ut eu diam nec nisi dignissim blandit id vel velit. Vivamus sit amet dolor augue. Sed sit amet lectus sit amet nibh ultricies pellentesque. Vestibulum lobortis ultrices feugiat. Nunc imperdiet dolor at dui tristique vehicula. </p>
     </br>
 </div></div>
 <!--/.Content-->

@@ -100,7 +100,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link otra-letra" href=" {{ URL::to('home') }} ">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link otra-letra" href="{{ URL::to('home') }}"> Home </a>
                 </li>
                 <li class="nav-item btn-group">
                     <a class="nav-link otra-letra dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías
@@ -110,7 +110,7 @@
                             $categorias = DB::table('menu_categorias')->get();
                         ?>
                         @foreach($categorias as $categ)
-                            <a class="dropdown-item otra-letra" href=" {{ URL::to('categorias/'.$categ->nombre_categoria) }} ">{{ $categ->nombre_categoria }}</a>
+                            <a class="dropdown-item otra-letra" href="{{ URL::to('categorias/'.$categ->nombre_categoria) }}">{{ $categ->nombre_categoria }}</a>
                         @endforeach
                         <!--<a class="dropdown-item otra-letra" href="#">Action</a>
                         <a class="dropdown-item otra-letra" href="#">Another action</a>
@@ -118,7 +118,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link otra-letra" href=" {{ URL::to('conocenos') }} ">Conócenos</a>
+                    <a class="nav-link otra-letra" href="{{ URL::to('conocenos') }}">Conócenos</a>
                 </li>
                 <li class="nav-item otra-letra">
                     <a class="nav-link otra-letra" href="{{ URL::to('historia') }}">Historia</a>
@@ -232,11 +232,42 @@
 
 <!--Content-->
 <div class="container"><div class="container">
-    </br>
-    <h1 align="center">Bienvenido!</h1>
-    </br>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue, est non venenatis facilisis, ante tellus sodales risus, id scelerisque orci ante eget est. Sed placerat, magna ac tristique rutrum, erat nibh tempor mi, id ultrices lectus metus at odio. Proin vel dolor sed urna commodo rutrum. Maecenas fermentum orci a neque hendrerit, sed hendrerit sapien vehicula. Nulla feugiat orci tempus blandit laoreet. Morbi non dolor at nulla varius tristique sit amet at augue. Sed est diam, vestibulum consequat ante eu, blandit viverra orci. Duis neque odio, feugiat nec leo at, scelerisque dictum libero. </p>
-    </br>
+    <h1 align="center">Menú del día</h1> 
+    <?php
+        $categorias = DB::table('menu_categorias')->get();
+    ?>
+    @foreach($categorias as $categ)
+    <h1>{{ $categ->nombre_categoria }}</h1>
+        <div class="row my-5">
+            <!--First columnn-->
+            <?php
+            $elementos = DB::table('item_categorias')->where('menu_id',$categ->id_categoria)->get();
+            ?>
+
+            @foreach($elementos as $elemen)
+            <div class="col-lg-4">
+                <!--Card-->
+                <div class="card wow fadeIn" data-wow-delay="0.2s" style="margin-bottom:5%">
+
+                    <!--Card image-->
+                    <img class="" height="300" src="{{ $elemen->path }}" alt="Card image cap">
+
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title">{{ $elemen->item_name }}</h4>
+                        <!--Text-->
+                        <p class="card-text otra-letra">{{ $elemen->descripcion }}</p>
+                        <a href="#" class="btn btn-info otra-letra">$ {{ $elemen->precio }}</a>
+                    </div>
+
+                </div>
+                <!--/.Card-->
+            </div>
+            @endforeach
+            <!--First columnn-->
+        </div>
+    @endforeach
 </div></div>
 <!--/.Content-->
 <!--Footer-->

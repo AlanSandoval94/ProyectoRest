@@ -59,6 +59,7 @@
 				</tr>
 			</table>
 		</form>
+
 		<h1>Seleccione un elemento para borrar.</h1>
 		<hr>
 		<form action="{{ URL::to('api/item_categorias/delete') }}" method="POST">
@@ -75,11 +76,15 @@
 							@endforeach
 						</select>
 					</td>
+					<input type="hidden" name="tabla" value="item_categorias">
 					<td><input type="submit" value="Borrar"></td>
 				</tr>
 			</table>
 		</form>
 		@break
+
+-------------------------------------------------------------------------------------------------------------------------
+
 		@case('menu_categorias')
 		<h1>Nueva Categoría</h1>
 			<form action="{{ URL::to('api/menu_categorias/save') }}" method="POST">
@@ -111,6 +116,7 @@
 							@endforeach
 						</select>
 					</td>
+					<input type="hidden" name="tabla" value="menu_categorias">
 					<td><input type="submit" value="Borrar"></td>
 				</tr>
 			</table>
